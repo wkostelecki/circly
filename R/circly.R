@@ -21,7 +21,7 @@ circly = function(M1, M2 = M1){
    in_end = cumsum(apply(M2, 1, sum)) * 0.5
    in_start = c(0, in_end[1:(length(in_end) - 1)])
    
-   gap = 0.05 / (length(COLNAMES) + length(ROWNAMES))
+   gap = 0.05 / (NROW + NCOL)
    
    out_start = out_start * (1 - 2 * gap * length(out_start))
    out_end = out_end * (1 - 2 * gap * length(out_start))
