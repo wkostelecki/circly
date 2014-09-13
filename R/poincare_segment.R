@@ -1,3 +1,5 @@
+# http://stackoverflow.com/questions/14599150/chord-diagram-in-r
+
 poincare_segment <- function(u1, u2, v1, v2) {
    # Check that the points are sufficiently different
    if( abs(u1-v1) < 1e-6 && abs(u2-v2) < 1e-6 )
