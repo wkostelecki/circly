@@ -1,4 +1,5 @@
 circly = function(M1, M2 = M1){
+   # creates chord diagram from two matrix inputs
    
    NCOL = ncol(M1)
    NROW = nrow(M1)
