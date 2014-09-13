@@ -1,8 +1,18 @@
-circly = function(M1, M2){
+circly = function(M1, M2 = M1){
+   
    NCOL = ncol(M1)
    NROW = nrow(M1)
-   colnames = colnames(M1)
-   rownames = rownames(M1)
+   COLNAMES = colnames(M1)
+   ROWNAMES = rownames(M1)
+   
+   if (NCOL != ncol(M2) || NROW != nrow(M2)){
+      stop('M1 and M2 must have matching dimensions')
+   }
+   
+   if (!all(COLNAMES == colnames(M2)) || !all(ROWNAMES == rownames(M2))){
+      stop('M1 and M2 must have matching column and row names')
+   }
+   
    M1 = M1 / sum(M1)
    out_end = cumsum(apply(M1, 2, sum)) * 0.5
    out_start = c(0, out_end[1:(length(out_end) - 1)])
@@ -11,7 +21,7 @@ circly = function(M1, M2){
    in_end = cumsum(apply(M2, 1, sum)) * 0.5
    in_start = c(0, in_end[1:(length(in_end) - 1)])
    
-   gap = 0.05 / (length(colnames) + length(rownames))
+   gap = 0.05 / (length(COLNAMES) + length(ROWNAMES))
    
    out_start = out_start * (1 - 2 * gap * length(out_start))
    out_end = out_end * (1 - 2 * gap * length(out_start))
@@ -26,6 +36,9 @@ circly = function(M1, M2){
    in_end = in_end + gap / 2
    in_start = in_start + gap * 0:(length(in_start) - 1)
    in_end = in_end + gap * 0:(length(in_start) - 1)
+   
+   in_start = - in_start + 0.5
+   in_end = -in_end + 0.5
    
    par(mar = c(1, 1, 2, 1))
    par(pty = 's')
@@ -42,9 +55,9 @@ circly = function(M1, M2){
    for(i in 1:length(out_start)) {
       theta <- 2*pi*seq(out_start[i], out_end[i], length = 100)
       thetaText = pi * (out_start[i] + out_end[i])
-      text(1.22 * cos(thetaText), 1.25 * sin(thetaText), colnames[i], srt = 270 - (pi - thetaText) * 180 / pi)
+      text(1.22 * cos(thetaText), 1.25 * sin(thetaText), COLNAMES[i], srt = 270 - (pi - thetaText) * 180 / pi)
       r1 <- 1.03
-      r2 <- 1.15
+      r2 <- 1.1
       polygon(
          c( r1*cos(theta), rev(r2*cos(theta)) ),
          c( r1*sin(theta), rev(r2*sin(theta)) ),
@@ -55,9 +68,9 @@ circly = function(M1, M2){
    for(i in 1:length(in_start)) {
       theta <- 2*pi*seq(in_start[i], in_end[i], length = 100)
       thetaText = pi * (in_start[i] + in_end[i])
-      text(1.22 * cos(thetaText), 1.25 * sin(thetaText), rownames[i], srt = 90 - (pi - thetaText) * 180 / pi)
+      text(1.22 * cos(thetaText), 1.25 * sin(thetaText), ROWNAMES[i], srt = 90 - (pi - thetaText) * 180 / pi)
       r1 <- 1.03
-      r2 <- 1.15
+      r2 <- 1.1
       polygon(
          c( r1*cos(theta), rev(r2*cos(theta)) ),
          c( r1*sin(theta), rev(r2*sin(theta)) ),
@@ -67,7 +80,7 @@ circly = function(M1, M2){
    
    
    for(i in 1:NCOL) {
-      col = paste0(colcol[i], '80')
+      col = paste0(colcol[i], '80') # add transparency
       for(j in 1:NROW) {
          p1 = sum(c(0, M1[, i])[1:j]) / sum(M1[, i])
          p2 = sum(M1[, i][1:j]) / sum(M1[, i])
@@ -75,18 +88,12 @@ circly = function(M1, M2){
          v = out_start[i] + (out_end[i] - out_start[i]) * p2
          
          k = NROW + 1 - j
+         k = j
          p1 = sum(c(0, M2[k, ])[1:i]) / sum(M2[k, ])
          p2 = sum(M2[k, ][1:i]) / sum(M2[k, ])
-         x = in_start[k] + (in_end[k] - in_start[k]) * p1
-         y = in_start[k] + (in_end[k] - in_start[k]) * p2
+         x = in_start[k] + (in_end[k] - in_start[k]) * p2
+         y = in_start[k] + (in_end[k] - in_start[k]) * p1
          
-         #          i = from * NROW + 1 - to
-         #          j = (to - 1) * ncol(M1) + from
-         #          k = 0
-         #          u <- c(0.5, 0.5 + cumsum(sapply(1:NCOL, function(x) rev(M1[, x]))) * 0.5)[i]
-         #          v <- c(0.5, 0.5 + cumsum(sapply(1:NCOL, function(x) rev(M1[, x]))) * 0.5)[i + 1]
-         #          x <- c(0, 0 + matrix(cumsum(t(M2)), ncol = NROW) * 0.5)[j]
-         #          y <- c(0, 0 + matrix(cumsum(t(M2)), ncol = NROW) * 0.5)[j + 1]
          if(!is.na(u*v*x*y)) {
             r1 <- poincare_segment( cos(2*pi*v), sin(2*pi*v), cos(2*pi*x), sin(2*pi*x) )
             r2 <- poincare_segment( cos(2*pi*y), sin(2*pi*y), cos(2*pi*u), sin(2*pi*u) )
