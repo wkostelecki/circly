@@ -91,8 +91,8 @@ circly = function(M1, M2 = M1){
          k = j
          p1 = sum(c(0, M2[k, ])[1:i]) / sum(M2[k, ])
          p2 = sum(M2[k, ][1:i]) / sum(M2[k, ])
-         x = in_start[k] + (in_end[k] - in_start[k]) * p2
-         y = in_start[k] + (in_end[k] - in_start[k]) * p1
+         x = in_end[k] - (in_end[k] - in_start[k]) * p1
+         y = in_end[k] - (in_end[k] - in_start[k]) * p2
          
          if(!is.na(u*v*x*y)) {
             r1 <- poincare_segment( cos(2*pi*v), sin(2*pi*v), cos(2*pi*x), sin(2*pi*x) )
