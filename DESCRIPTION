@@ -1,10 +1,10 @@
 Package: circly
 Type: Package
-Title: What the package does (short line)
+Title: Package for chord diagrams
 Version: 1.0
 Date: 2014-09-07
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Author: Wojciech (Wojtek) Kostelecki
+Maintainer: <wkostelecki@gmail.com>
+Description: Creates chord diagrams
 License: What license is it under?
 Suggests: testthat

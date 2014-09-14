@@ -6,7 +6,7 @@
 Creates chord diagrams
 }
 \description{
-Creates chord diagrams.
+Creates chord diagrams
 }
 \details{
 \tabular{ll}{
@@ -20,10 +20,11 @@ License: \tab What license is it under?\cr
 }
 \author{
 Wojciech (Wojtek) Kostelecki
+
 Maintainer: <wkostelecki@gmail.com>
 }
 \references{
-Useful StackOverFlow comment from user Vincent Zoonekynd:
+Useful Stack Overflow comment from Vincent Zoonekynd:
 http://stackoverflow.com/questions/14599150/chord-diagram-in-r
 }
 
