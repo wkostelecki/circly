@@ -1,4 +1,4 @@
-circly = function(M1, M2 = M1){
+circly = function(M1, M2 = M1, gap_width = 0.005){
    # creates chord diagram from two matrix inputs
    
    NCOL = ncol(M1)
@@ -18,27 +18,25 @@ circly = function(M1, M2 = M1){
    
    M1 = M1 / sum(M1)
    out_end = cumsum(apply(M1, 2, sum)) * 0.5
-   out_start = c(0, out_end[1:(length(out_end) - 1)])
+   out_start = c(0, out_end[1:(length(out_end) - 1)])[1:length(out_end)]
    
    M2 = M2 / sum(M2)
    in_end = cumsum(apply(M2, 1, sum)) * 0.5
-   in_start = c(0, in_end[1:(length(in_end) - 1)])
+   in_start = c(0, in_end[1:(length(in_end) - 1)])[1:length(in_end)]
    
-   gap = 0.05 / (NROW + NCOL)
+   out_start = out_start * (1 - 2 * gap_width * length(out_start))
+   out_end = out_end * (1 - 2 * gap_width * length(out_start))
+   out_start = out_start + gap_width / 2
+   out_end = out_end + gap_width / 2
+   out_start = out_start + gap_width * 0:(length(out_start) - 1) + 0.5
+   out_end = out_end + gap_width * 0:(length(out_start) - 1) + 0.5
    
-   out_start = out_start * (1 - 2 * gap * length(out_start))
-   out_end = out_end * (1 - 2 * gap * length(out_start))
-   out_start = out_start + gap / 2
-   out_end = out_end + gap / 2
-   out_start = out_start + gap * 0:(length(out_start) - 1) + 0.5
-   out_end = out_end + gap * 0:(length(out_start) - 1) + 0.5
-   
-   in_start = in_start * (1 - 2 * gap * length(in_start))
-   in_end = in_end * (1 - 2 * gap * length(in_start))
-   in_start = in_start + gap / 2
-   in_end = in_end + gap / 2
-   in_start = in_start + gap * 0:(length(in_start) - 1)
-   in_end = in_end + gap * 0:(length(in_start) - 1)
+   in_start = in_start * (1 - 2 * gap_width * length(in_start))
+   in_end = in_end * (1 - 2 * gap_width * length(in_start))
+   in_start = in_start + gap_width / 2
+   in_end = in_end + gap_width / 2
+   in_start = in_start + gap_width * 0:(length(in_start) - 1)
+   in_end = in_end + gap_width * 0:(length(in_start) - 1)
    
    in_start = - in_start + 0.5
    in_end = -in_end + 0.5
