@@ -16,15 +16,13 @@ M1 = matrix(sample((1:(NCOL * NROW)) ^ 2), ncol = NCOL)
 M2 = matrix(sample(((NCOL * NROW):1) ^ 2), ncol = NCOL)
 
 # colnames = sapply(1:NCOL, function(x) paste0(sample(LETTERS, 8), collapse = ''))
-<<<<<<< HEAD
+
 # colnames = LETTERS[1:NCOL]
 # colnames[2] = 'B\nBC'
 # rownames = letters[1:NROW]
-=======
 colnames = LETTERS[1:NCOL]
 # colnames[2] = 'B\nBC'
 rownames = letters[1:NROW]
->>>>>>> af74a82751799025787eae240b97eae60ad80d41
 # rownames[2] = 'safasdf\nsadfsadg'
 
 # colnames(M1) = colnames
