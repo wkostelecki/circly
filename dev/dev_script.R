@@ -15,9 +15,11 @@ M2 = matrix(runif(NCOL * NROW), ncol = NCOL)
 M1 = matrix(sample((1:(NCOL * NROW)) ^ 2), ncol = NCOL)
 M2 = matrix(sample(((NCOL * NROW):1) ^ 2), ncol = NCOL)
 
+# colnames = sapply(1:NCOL, function(x) paste0(sample(LETTERS, 8), collapse = ''))
 colnames = LETTERS[1:NCOL]
 # colnames[2] = 'B\nBC'
 rownames = letters[1:NROW]
+# rownames[2] = 'safasdf\nsadfsadg'
 
 colnames(M1) = colnames
 colnames(M2) = colnames

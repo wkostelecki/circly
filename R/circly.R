@@ -47,9 +47,10 @@ circly = function(M1, M2 = M1,
    
    par(mar = c(1, 1, 2, 1))
    par(pty = 's')
+   extent = 1.25
    plot(0, 0, 
-        xlim = c(-1.2, 1.2),
-        ylim = c(-1.2, 1.2),
+        xlim = c(-1, 1) * extent,
+        ylim = c(-1, 1) * extent,
         type = "n",
         axes = FALSE, 
         xlab = "",
