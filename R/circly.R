@@ -1,4 +1,7 @@
-circly = function(M1, M2 = M1, gap_width = 0.005){
+circly = function(M1, M2 = M1,
+                  color_column = rep(rgb(0, 0, 0), ncol(M1)),
+                  color_row = rep(rgb(0, 0, 0), nrow(M1)),
+                  gap_width = 0.005){
    # creates chord diagram from two matrix inputs
    
    NCOL = ncol(M1)
@@ -51,7 +54,7 @@ circly = function(M1, M2 = M1, gap_width = 0.005){
         xlab = "",
         ylab = "")
    
-   colcol = rgb(runif(NCOL), runif(NCOL), runif(NCOL))
+   colcol = color_column
    
    for(i in 1:length(out_start)) {
       theta <- 2*pi*seq(out_start[i], out_end[i], length = 100)
@@ -75,7 +78,7 @@ circly = function(M1, M2 = M1, gap_width = 0.005){
       polygon(
          c( r1*cos(theta), rev(r2*cos(theta)) ),
          c( r1*sin(theta), rev(r2*sin(theta)) ),
-         col= rgb(runif(1), runif(1), runif(1)), border = NA
+         col= color_row[i], border = NA
       )
    }
    
