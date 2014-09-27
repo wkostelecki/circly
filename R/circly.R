@@ -6,12 +6,14 @@ circly = function(M1, M2 = M1){
    COLNAMES = colnames(M1)
    ROWNAMES = rownames(M1)
    
-   if (NCOL != ncol(M2) || NROW != nrow(M2)){
+   if (!all(dim(M1) == dim(M2))){
       stop('M1 and M2 must have matching dimensions')
    }
    
    if (!all(COLNAMES == colnames(M2)) || !all(ROWNAMES == rownames(M2))){
-      stop('M1 and M2 must have matching column and row names')
+      warning('Row and column names of M2 being replaced with those from M1')
+      colnames(M2) = colnames(M1)
+      rownames(M2) = rownames(M1)
    }
    
    M1 = M1 / sum(M1)
