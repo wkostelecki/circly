@@ -43,11 +43,13 @@ circly = function(M1, M2 = M1,
    in_end = in_end + gap_width * 0:(length(in_start) - 1)
    
    in_start = - in_start + 0.5
-   in_end = -in_end + 0.5
+   in_end = - in_end + 0.5
    
-   par(mar = c(1, 1, 2, 1))
-   par(pty = 's')
+   par(mar = c(1, 1, 2, 1),
+       pty = 's')
+   
    extent = 1.25
+   
    plot(0, 0, 
         xlim = c(-1, 1) * extent,
         ylim = c(-1, 1) * extent,
@@ -56,10 +58,8 @@ circly = function(M1, M2 = M1,
         xlab = "",
         ylab = "")
    
-   colcol = color_column
-   
    for(i in 1:length(out_start)) {
-      theta <- 2*pi*seq(out_start[i], out_end[i], length = 100)
+      theta <- 2 * pi * seq(out_start[i], out_end[i], length = 100)
       thetaText = pi * (out_start[i] + out_end[i])
       text(1.22 * cos(thetaText),
            1.25 * sin(thetaText),
@@ -69,14 +69,14 @@ circly = function(M1, M2 = M1,
       r1 <- 1.03
       r2 <- 1.1
       polygon(
-         c( r1*cos(theta), rev(r2*cos(theta)) ),
-         c( r1*sin(theta), rev(r2*sin(theta)) ),
-         col= colcol[i], border = NA
+         c(r1 * cos(theta), rev(r2 * cos(theta))),
+         c(r1 * sin(theta), rev(r2 * sin(theta))),
+         col= color_column[i], border = NA
       )
    }
    
    for(i in 1:length(in_start)) {
-      theta <- 2*pi*seq(in_start[i], in_end[i], length = 100)
+      theta <- 2 * pi * seq(in_start[i], in_end[i], length = 100)
       thetaText = pi * (in_start[i] + in_end[i])
       text(1.22 * cos(thetaText),
            1.25 * sin(thetaText),
@@ -94,7 +94,7 @@ circly = function(M1, M2 = M1,
    
    
    for(i in 1:NCOL) {
-      col = paste0(colcol[i], '80') # add transparency
+      col = paste0(color_column[i], '80') # add transparency
       for(j in 1:NROW) {
          p1 = sum(c(0, M1[, i])[1:j]) / sum(M1[, i])
          p2 = sum(M1[, i][1:j]) / sum(M1[, i])
