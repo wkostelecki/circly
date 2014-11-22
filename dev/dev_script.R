@@ -25,9 +25,9 @@ colnames = LETTERS[1:NCOL]
 rownames = letters[1:NROW]
 # rownames[2] = 'safasdf\nsadfsadg'
 
-# colnames(M1) = colnames
+colnames(M1) = colnames
 # colnames(M2) = colnames
-# rownames(M1) = rownames
+rownames(M1) = rownames
 # rownames(M2) = rownames
 
 circly(M1, M2)

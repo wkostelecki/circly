@@ -6,21 +6,27 @@ circly = function (M1,
                    cex = 1,
                    label_orientation = 'radial')
 {
+   
   NCOL = ncol(M1)
   NROW = nrow(M1)
+  
   COLNAMES = colnames(M1)
   ROWNAMES = rownames(M1)
+  
   if (!all(dim(M1) == dim(M2))) {
     stop("M1 and M2 must have matching dimensions")
   }
+  
   if (!all(COLNAMES == colnames(M2)) || !all(ROWNAMES == rownames(M2))) {
     warning("Row and column names of M2 being replaced with those from M1")
     colnames(M2) = colnames(M1)
     rownames(M2) = rownames(M1)
   }
-  M1 = M1/sum(M1)
+  
+  M1 = M1 / sum(M1)
   out_end = cumsum(apply(M1, 2, sum)) * 0.5
   out_start = c(0, out_end[1:(length(out_end) - 1)])[1:length(out_end)]
+  
   M2 = M2/sum(M2)
   in_end = cumsum(apply(M2, 1, sum)) * 0.5
   in_start = c(0, in_end[1:(length(in_end) - 1)])[1:length(in_end)]
@@ -28,10 +34,8 @@ circly = function (M1,
   out_end = out_end * (1 - 2 * gap_width * length(out_start))
   out_start = out_start + gap_width/2
   out_end = out_end + gap_width/2
-  out_start = out_start + gap_width * 0:(length(out_start) -
-                                           1) + 0.5
-  out_end = out_end + gap_width * 0:(length(out_start) - 1) +
-    0.5
+  out_start = out_start + gap_width * 0:(length(out_start) - 1) + 0.5
+  out_end = out_end + gap_width * 0:(length(out_start) - 1) + 0.5
   in_start = in_start * (1 - 2 * gap_width * length(in_start))
   in_end = in_end * (1 - 2 * gap_width * length(in_start))
   in_start = in_start + gap_width/2
@@ -40,18 +44,22 @@ circly = function (M1,
   in_end = in_end + gap_width * 0:(length(in_start) - 1)
   in_start = -in_start + 0.5
   in_end = -in_end + 0.5
+  
   par(mar = c(1, 1, 2, 1), pty = "s")
   extent = 1.6
+  
   plot(0, 0, xlim = c(-1, 1) * extent, ylim = c(-1, 1) * extent,
        type = "n", axes = FALSE, xlab = "", ylab = "")
 
   RR = 1.3
 
+  # Place chords in random order
   ORDER = expand.grid(i = 1:NCOL,
                       j = 1:NROW)
   set.seed(1)
   ORDER = ORDER[sample(nrow(ORDER)), ]
   for (k in 1:nrow(ORDER)) {
+     
      i = ORDER$i[k]
      j = ORDER$j[k]
      
@@ -79,10 +87,17 @@ circly = function (M1,
                                                        pi * y), cos(2 * pi * u), sin(2 * pi * u))
         th1 <- 2 * pi * seq(u, v, length = 20)
         th2 <- 2 * pi * seq(x, y, length = 20)
-        polygon(c(cos(th1), r1$x, (cos(th2)), r2$x),
-                c(sin(th1), r1$y, (sin(th2)), r2$y), col = col, border = NA)
-        points(c(cos(th1), r1$x, (cos(th2)), r2$x),
-               c(sin(th1), r1$y, (sin(th2)), r2$y), col = col, type = 'l')
+        
+        pathx = c(cos(th1), r1$x, (cos(th2)), r2$x)
+        pathy = c(sin(th1), r1$y, (sin(th2)), r2$y)
+        
+        polygon(pathx, pathy,
+                col = col,
+                border = NA)
+        points(pathx, pathy,
+               col = paste0(color_column[i], "40"),
+               type = 'l')
+        
      }
   }
   
