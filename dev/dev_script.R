@@ -3,8 +3,8 @@ library(circly)
 library(circlize)
 # source('./circly.R')
 
-NCOL = 1
-NROW = 2
+NCOL = 5
+NROW = 3
 # set.seed(5)
 M1 = matrix(runif(NCOL * NROW), ncol = NCOL)
 M2 = matrix(runif(NCOL * NROW), ncol = NCOL)

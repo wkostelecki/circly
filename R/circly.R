@@ -1,6 +1,10 @@
-circly = function (M1, M2 = M1, color_column = rep(rgb(0, 0, 0), ncol(M1)),
-          color_row = rep(rgb(0, 0, 0), nrow(M1)), gap_width = 0.005,
-          cex = 1, label_orientation = 'radial')
+circly = function (M1,
+                   M2 = M1,
+                   color_column = rep(rgb(0, 0, 0), ncol(M1)),
+                   color_row = rep(rgb(0, 0, 0), nrow(M1)),
+                   gap_width = 0.005,
+                   cex = 1,
+                   label_orientation = 'radial')
 {
   NCOL = ncol(M1)
   NROW = nrow(M1)
