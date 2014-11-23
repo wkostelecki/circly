@@ -98,7 +98,7 @@ circly = function (M1,
                 col = col,
                 border = NA)
         points(pathx, pathy,
-               col = paste0(color_column[i], "40"),
+               col = paste0(color_column[i], "20"),
                type = 'l')
         
      }
