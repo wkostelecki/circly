@@ -9,6 +9,7 @@ circly = function (M1,
    
   NCOL = ncol(M1)
   NROW = nrow(M1)
+  NSEGMENT = NCOL + NROW
   
   COLNAMES = colnames(M1)
   ROWNAMES = rownames(M1)
@@ -23,6 +24,8 @@ circly = function (M1,
     rownames(M2) = rownames(M1)
   }
   
+  gap_total = pmin(gap_width * (NSEGMENT), 0.9)
+  gap_width = gap_total / (NSEGMENT)
   M1 = M1 / sum(M1)
   out_end = cumsum(apply(M1, 2, sum)) * 0.5
   out_start = c(0, out_end[1:(length(out_end) - 1)])[1:length(out_end)]
