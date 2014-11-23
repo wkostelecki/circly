@@ -17,8 +17,8 @@ circly = function (M1,
     stop("M1 and M2 must have matching dimensions")
   }
   
-  if (!all(COLNAMES == colnames(M2)) || !all(ROWNAMES == rownames(M2))) {
-    warning("Row and column names of M2 being replaced with those from M1")
+  if (!identical(COLNAMES, colnames(M2)) || !identical(ROWNAMES, rownames(M2))) {
+    warning("Row and column names of M2 assumed to match those from M1")
     colnames(M2) = colnames(M1)
     rownames(M2) = rownames(M1)
   }
