@@ -35,10 +35,12 @@ colnames(M2) = colnames
 rownames(M1) = rownames
 rownames(M2) = rownames
 
-# color_column = rgb(c(1,0,1,1,0), c(0,1,0,1,0), c(1,1,0,1,0))
+color_column = rgb(c(1,0,1,0,0), c(0,1,0,0,1), c(1,1,0,1,0))
+color_row = rgb(c(0,0,0), c(0.5,0.5,0.5), c(0,0,0))
 
-circly(M1, M2, gap_width = 0.01)
-
+# png('./tmp.png', height = 1000, width = 1000)
+circly(M1, M2, gap_width = 0.01, ROI = 1.5, color_column = color_column, color_row = color_row)
+# dev.off()
 
 # png('./tmp.png', height = 1000, width = 1000)
 # circly(M1, M2, color_column = rgb(c(1,0,0,0.5), c(0,1,0,0), c(0,0,1,0.5)),

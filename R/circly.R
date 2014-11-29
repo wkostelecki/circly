@@ -44,15 +44,15 @@ circly = function (M1,
   compress = 1 - gap_width * length(out_start)
   gaps = gap_width / 2 + (gap_width * 0:(length(out_start) - 1))
   
-  out_start = (out_start * compress + gaps - 0.5) * 0.5 + 0.75
-  out_end = (out_end * compress + gaps - 0.5) * 0.5 + 0.75
+  out_start = (out_start * compress + gaps - 0.5) * (1 / (ROI + 1)) + 0.75
+  out_end = (out_end * compress + gaps - 0.5) * (1 / (ROI + 1)) + 0.75
 
   # ----
   compress = 1 - gap_width * length(in_start)
   gaps = gap_width / 2 + (gap_width * 0:(length(in_start) - 1))
   
-  in_start = -(in_start * compress + gaps - 0.5) * 0.5 + 0.25
-  in_end = -(in_end * compress + gaps - 0.5) * 0.5 + 0.25
+  in_start = -(in_start * compress + gaps - 0.5) * (ROI / (ROI + 1)) + 0.25
+  in_end = -(in_end * compress + gaps - 0.5) * (ROI / (ROI + 1)) + 0.25
 
   par(mar = c(1, 1, 2, 1), pty = "s")
   extent = 1.6
