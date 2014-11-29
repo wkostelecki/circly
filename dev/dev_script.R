@@ -39,6 +39,7 @@ rownames(M2) = rownames
 
 circly(M1, M2, gap_width = 0.01)
 
+
 # png('./tmp.png', height = 1000, width = 1000)
 # circly(M1, M2, color_column = rgb(c(1,0,0,0.5), c(0,1,0,0), c(0,0,1,0.5)),
 #        color_row = rgb(c(0.5,0,0.2,0.8), c(0.5,0.5,0.8,0.2), c(0,0.5,0.2,0.2)))
