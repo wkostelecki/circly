@@ -9,6 +9,11 @@ NROW = 3
 # M1 = matrix(runif(NCOL * NROW), ncol = NCOL)
 # M2 = matrix(runif(NCOL * NROW), ncol = NCOL)
 
+
+options(debug_mode = FALSE)
+# options(debug_mode = TRUE)
+
+
 M1 = matrix(1:(NCOL * NROW), ncol = NCOL)
 M2 = matrix((NCOL * NROW):1, ncol = NCOL)
 
@@ -30,9 +35,9 @@ colnames(M2) = colnames
 rownames(M1) = rownames
 rownames(M2) = rownames
 
-circly(M1, M2)
+# color_column = rgb(c(1,0,1,1,0), c(0,1,0,1,0), c(1,1,0,1,0))
 
-# chordDiagram(M1)
+circly(M1, M2, gap_width = 0.05)
 
 # png('./tmp.png', height = 1000, width = 1000)
 # circly(M1, M2, color_column = rgb(c(1,0,0,0.5), c(0,1,0,0), c(0,0,1,0.5)),
