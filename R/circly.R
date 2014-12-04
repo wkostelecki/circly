@@ -110,7 +110,7 @@ circly = function (M1,
     }
   }
   
-  
+  # bottoms segments ----
   for (i in 1:length(out_start)) {
     theta <- 2 * pi * seq(out_start[i], out_end[i], length = 100)
     
@@ -137,7 +137,7 @@ circly = function (M1,
     }
   }
   
-  
+  # top segments ----
   for (i in 1:length(in_start)) {
     theta <- 2 * pi * seq(in_start[i], in_end[i], length = 100)
     r1 <- 1.03

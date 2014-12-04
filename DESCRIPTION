@@ -7,4 +7,5 @@ Author: Wojciech (Wojtek) Kostelecki
 Maintainer: <wkostelecki@gmail.com>
 Description: Creates chord diagrams
 License: What license is it under?
-Suggests: testthat
+Suggests:
+    testthat
