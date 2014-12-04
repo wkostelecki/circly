@@ -8,9 +8,9 @@ circly = function (M1,
                    ROI = 1)
 {
   
-  if (getOption('debug_mode')){
-    browser()
-  }
+  #if (getOption('debug_mode')){
+  #  browser()
+  #}
   
   NCOL = ncol(M1)
   NROW = nrow(M1)
