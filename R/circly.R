@@ -36,7 +36,7 @@ circly = function (M1,
   out_end = cumsum(apply(M1, 2, sum))
   out_start = c(0, out_end[1:(length(out_end) - 1)])
   
-  M2 = M2/sum(M2)
+  M2 = M2 / sum(M2)
   in_end = cumsum(apply(M2, 1, sum))
   in_start = c(0, in_end[1:(length(in_end) - 1)])
   
@@ -77,8 +77,8 @@ circly = function (M1,
     }
     
     col = paste0(color_column[i], "80")
-    p1 = sum(c(0, M1[, i])[1:j])/sum(M1[, i])
-    p2 = sum(M1[, i][1:j])/sum(M1[, i])
+    p1 = sum(c(0, M1[, i])[1:j]) / sum(M1[, i])
+    p2 = sum(M1[, i][1:j]) / sum(M1[, i])
     u = out_start[i] + (out_end[i] - out_start[i]) *
       p1
     v = out_start[i] + (out_end[i] - out_start[i]) *
@@ -114,8 +114,8 @@ circly = function (M1,
   for (i in 1:length(out_start)) {
     theta <- 2 * pi * seq(out_start[i], out_end[i], length = 100)
     
-    r1 <- 1.03
-    r2 <- 1.1
+    r1 = 1.03
+    r2 = 1.1
     polygon(c(r1 * cos(theta), rev(r2 * cos(theta))), c(r1 *
                                                           sin(theta),
                                                         rev(r2 * sin(theta))),

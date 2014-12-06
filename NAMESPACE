@@ -1,1 +1,4 @@
-exportPattern("circly")
+export('circly')
+export('chord_shapes')
+import('magrittr')
+importFrom('reshape2', 'dcast')
