@@ -51,41 +51,9 @@ chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
   
   in_start = -(in_start * compress + gaps - 0.5) * (ROI / (ROI + 1)) + 0.25
   in_end = -(in_end * compress + gaps - 0.5) * (ROI / (ROI + 1)) + 0.25
-  # bottoms segments ----
-  
-#   r1 = 1.03
-#   r2 = 1.1
   
   inner_r = 1.03
   outer_r = 1.1
-  
-#   outer_segments = data.frame()
-#   
-#   for (i in 1:length(out_start)) {
-#     theta <- 2 * pi * seq(out_start[i], out_end[i], length = 100)
-#     
-#     x = c(r1 * cos(theta), rev(r2 * cos(theta)))
-#     y = c(r1 * sin(theta), rev(r2 * sin(theta)))
-#     
-#     outer_segments = rbind(outer_segments,
-#                            data.frame(ID = paste('Out', i),
-#                                       x = x,
-#                                       y = y))
-#   }
-#   
-#   # top segments ----
-#   for (i in 1:length(in_start)) {
-#     theta <- 2 * pi * seq(in_start[i], in_end[i], length = 100)
-#     
-#     x = c(r1 * cos(theta), rev(r2 * cos(theta)))
-#     y = c(r1 * sin(theta), rev(r2 * sin(theta)))
-#     
-#     outer_segments = rbind(outer_segments,
-#                            data.frame(ID = paste('In', i),
-#                                       x = x,
-#                                       y = y))
-#     
-#   }
   
   start = c(out_start, in_start)
   end = c(out_end, in_end)
