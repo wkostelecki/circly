@@ -1,3 +1,4 @@
+#' @export
 circly = function (M1,
                    M2 = M1,
                    color_column = rep(rgb(0, 0, 0), ncol(M1)),

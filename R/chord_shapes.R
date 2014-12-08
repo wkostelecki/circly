@@ -1,3 +1,5 @@
+#' @import magrittr dplyr
+#' @importFrom reshape2 dcast
 #' @export
 chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
   gap_width = 0.005
