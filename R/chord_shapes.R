@@ -1,20 +1,23 @@
+#' @export
 chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
   gap_width = 0.005
+  
   #browser()
   #----
+  
   M1 = dcast(data,
              as.formula(paste(to_label, '~', from_label)),
              value.var = from_amount) %>%
     subset(select = 2:ncol(.), drop = FALSE) %>%
     as.matrix %>%
     unname
+  
   M2 = dcast(data,
              as.formula(paste(to_label, '~', from_label)),
              value.var = to_amount) %>%
     subset(select = 2:ncol(.), drop = FALSE) %>%
     as.matrix %>%
     unname
-  
   
   ROI = sum(M2) / sum(M1)
   
