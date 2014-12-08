@@ -1,11 +1,13 @@
+library(circly)
+library(ggplot2)
 remove(list = ls())
 
-NROW = 1
-NCOL = 20
+NROW = 2
+NCOL = 25
 
 #----
 data = data.frame(FROM_AMOUNT = 1:(NROW * NCOL),
-                  TO_AMOUNT = (NROW * NCOL):1*2,
+                  TO_AMOUNT = (NROW * NCOL):1,
                   FROM_LABEL = rep(letters[1:NCOL], each = NROW),
                   TO_LABEL = rep(LETTERS[1:NROW], NCOL))
 from_label = 'FROM_LABEL'
