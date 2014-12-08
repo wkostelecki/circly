@@ -1,3 +1,9 @@
+#' @docType package
+#' @name circly
+#' @import magrittr dplyr
+#' @importFrom reshape2 dcast
+NULL
+
 #' @export
 circly = function (M1,
                    M2 = M1,
