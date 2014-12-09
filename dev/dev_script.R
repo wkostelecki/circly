@@ -30,15 +30,16 @@ colnames = LETTERS[1:NCOL]
 rownames = letters[1:NROW]
 # rownames[2] = 'safasdf\nsadfsadg'
 
-colnames(M1) = colnames
-colnames(M2) = colnames
-rownames(M1) = rownames
-rownames(M2) = rownames
+# colnames(M1) = colnames
+# colnames(M2) = colnames
+# rownames(M1) = rownames
+# rownames(M2) = rownames
 
 color_column = rgb(c(1,0,1,0,0), c(0,1,0,0,1), c(1,1,0,1,0))
 color_row = rgb(c(0,0,0), c(0.5,0.5,0.5), c(0,0,0))
 
-# png('./tmp.png', height = 1000, width = 1000)
+# png('./images/1_to_15.png', height = 400, width = 400,
+#     type = 'cairo')
 circly(M1, M2, gap_width = 0.005, ROI = 1.5, color_column = color_column, color_row = color_row)
 # dev.off()
 
