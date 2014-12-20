@@ -3,5 +3,4 @@
 export(chord_shapes)
 export(circly)
 import(dplyr)
-import(magrittr)
 importFrom(reshape2,dcast)

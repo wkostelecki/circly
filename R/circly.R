@@ -1,6 +1,10 @@
 #' @docType package
-#' @name circly
-#' @import magrittr dplyr
+#' @name circly-package
+#' @title Package for chord diagrams
+#' @references Useful Stack Overflow comment from Vincent Zoonekynd: \cr
+#'   http://stackoverflow.com/questions/14599150/chord-diagram-in-r
+#'   @examples circly(matrix(1:9, ncol = 3), matrix(9:1, ncol = 3))
+#' @import dplyr
 #' @importFrom reshape2 dcast
 NULL
 
