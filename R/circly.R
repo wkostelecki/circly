@@ -8,6 +8,18 @@
 #' @importFrom reshape2 dcast
 NULL
 
+
+#' @name circly
+#' @title circly
+#' @param M1 n x m matrix. Columns specify output segments and are placed at the
+#'   bottom of the circle. Rows specify input segments and are placed at the 
+#'   top.
+#' @param M2 n x m matrix. If not specified, M1 is used.
+#' @param color_column Colours for lower segments and their chords.
+#' @param color_row Colours for top segments.
+#' @param gap_width Proportion of circle used for gaps.
+#' @param ROI Value indicating the proportion that each hemisphere should cover.
+#'   e.g. value of 2 makes top hemisphere cover 2/3 of the circle
 #' @export
 circly = function (M1,
                    M2 = M1,
