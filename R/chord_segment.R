@@ -1,4 +1,11 @@
-
+#' @title chord_segment
+#' @description Creates x,y boundaries for chord segments of the chord diagram 
+#'   circle. \cr start and end arguments are in the interval [0, 1] and are
+#'   mapped to [0, 2 * pi]
+#' @param out_start point on circle (value in [0, 1])
+#' @param out_end point on circle (value in [0, 1])
+#' @param in_start point on circle (value in [0, 1])
+#' @param in_end point on circle (value in [0, 1])
 chord_segment = function(out_start, out_end, in_start, in_end){
   
   out_theta <- 2 * pi * seq(out_start, out_end, length = 100)
