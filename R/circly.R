@@ -8,9 +8,9 @@
 #' @importFrom reshape2 dcast
 NULL
 
-
 #' @name circly
-#' @title circly
+#' @title Chord Diagrams
+#' @description Creates chord diagrams from matrix inputs.
 #' @param M1 n x m matrix. Columns specify output segments and are placed at the
 #'   bottom of the circle. Rows specify input segments and are placed at the 
 #'   top.
