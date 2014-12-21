@@ -61,12 +61,17 @@ chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
           paste('IN', 1:length(in_start)))
   
   
-  outer_segments = lapply(1:length(start),
-                          function(i){
-                            circly:::outer_segment(start[i], end[i], inner_r, outer_r) %>%
-                              mutate(ID = IDS[i])
-                          }) %>% do.call(rbind, .) %>%
+  outer_segments = lapply(
+    1:length(start),
+    function(i){
+      circly:::outer_segment(start[i], end[i], inner_r, outer_r) %>%
+        mutate(ID = IDS[i])
+    }
+  ) %>%
+    do.call(rbind, .) %>%
     mutate(ID = factor(ID, IDS))
+  
+  
   
   return(list(outer_segments = outer_segments,
               chords = data.frame()))

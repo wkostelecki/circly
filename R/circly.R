@@ -101,10 +101,14 @@ circly = function (M1,
     x = in_end[k] - (in_end[k] - in_start[k]) * p1
     y = in_end[k] - (in_end[k] - in_start[k]) * p2
     if (!is.na(u * v * x * y)) {
-      r1 <- poincare_segment(cos(2 * pi * v), sin(2 *
-                                                    pi * v), cos(2 * pi * x), sin(2 * pi * x))
-      r2 <- poincare_segment(cos(2 * pi * y), sin(2 *
-                                                    pi * y), cos(2 * pi * u), sin(2 * pi * u))
+      r1 <- poincare_segment(cos(2 * pi * v),
+                             sin(2 * pi * v),
+                             cos(2 * pi * x),
+                             sin(2 * pi * x))
+      r2 <- poincare_segment(cos(2 * pi * y),
+                             sin(2 * pi * y),
+                             cos(2 * pi * u),
+                             sin(2 * pi * u))
       th1 <- 2 * pi * seq(u, v, length = 20)
       th2 <- 2 * pi * seq(x, y, length = 20)
       
