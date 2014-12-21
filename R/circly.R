@@ -45,11 +45,11 @@ circly = function (M1,
   
   M1 = M1 / sum(M1)
   out_end = cumsum(apply(M1, 2, sum))
-  out_start = c(0, out_end[1:(length(out_end) - 1)])
+  out_start = c(0, out_end[setdiff(0:(length(out_end) - 1), 0)])
   
   M2 = M2 / sum(M2)
   in_end = cumsum(apply(M2, 1, sum))
-  in_start = c(0, in_end[1:(length(in_end) - 1)])
+  in_start = c(0, in_end[setdiff(0:(length(in_end) - 1), 0)])
   
   # ----
   compress = 1 - gap_width * length(out_start) / (1 / (ROI + 1))
