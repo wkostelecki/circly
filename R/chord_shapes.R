@@ -60,7 +60,6 @@ chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
   IDS = c(paste('OUT', 1:length(out_start)),
           paste('IN', 1:length(in_start)))
   
-  
   outer_segments = lapply(
     1:length(start),
     function(i){
@@ -71,9 +70,9 @@ chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
     do.call(rbind, .) %>%
     mutate(ID = factor(ID, IDS))
   
-  
+  chords = placeholder_function(out_start, out_end, in_start, in_end, M1, M2)
   
   return(list(outer_segments = outer_segments,
-              chords = data.frame()))
+              chords = chords))
   
 }
