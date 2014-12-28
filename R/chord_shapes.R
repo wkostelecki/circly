@@ -1,9 +1,19 @@
 #' @importFrom reshape2 dcast
 #' @export
-chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
-  gap_width = 0.005
+chord_shapes = function(data,
+                        from_amount = 'FROM_AMOUNT',
+                        to_amount = 'TO_AMOUNT',
+                        from_label = 'FROM_LABEL',
+                        to_label = 'TO_LABEL'){
   
-  #browser()
+  if (length(intersect(unique(data[[from_label]]),
+                       unique(data[[to_label]]))) > 0){
+    stop('shared labels not yet (?) supported')
+  }
+  
+  gap_width = 0.005
+  ROI = 1
+  
   #----
   
   data = rename(data,
@@ -14,6 +24,7 @@ chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
   
   segment = outer_spacing(data, gap_width = gap_width, ROI = ROI)
   outer_segments = outer_segments(segment)
+  
   
   M1 = dcast(data,
              as.formula(paste(to_label, '~', from_label)),
@@ -79,7 +90,8 @@ chord_shapes = function(data, from_amount, to_amount, from_label, to_label){
     do.call(rbind, .) %>%
     mutate(ID = factor(ID, IDS))
   
-  chords = placeholder_function(out_start, out_end, in_start, in_end, M1, M2)
+  #chords = placeholder_function(out_start, out_end, in_start, in_end, M1, M2)
+  chords = data.frame()
   
   return(list(outer_segments = outer_segments,
               chords = chords))
