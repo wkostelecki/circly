@@ -1,6 +1,4 @@
-outer_spacing = function(data){
-  gap_width = 0.005
-  ROI = 1
+outer_spacing = function(data, gap_width = 0.005, ROI = 1){
   offset = 0.75
   from_segment = data %>%
     arrange(FROM, TO) %>%
