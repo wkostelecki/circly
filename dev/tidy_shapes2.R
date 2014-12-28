@@ -15,18 +15,7 @@ segment = outer_spacing(data)
 
 #----
 source('./R/outer_segment.R')
-inner_r = 1.03
-outer_r = 1.1
-
-outer_segments = with(segment, lapply(
-  1:length(Start),
-  function(i){
-    outer_segment(Start[i], End[i], inner_r, outer_r) %>%
-      mutate(Direction = segment$Direction[i],
-             Label = as.character(segment$Label[i]))
-  }
-)) %>%
-  do.call(rbind, .)
+shapes = outer_segments(segment)
 
 #----
 library(ggplot2)
@@ -39,15 +28,9 @@ g = ggplot(segment) +
 print(g)
 
 #----
-ggplot(outer_segments) +
+g = ggplot(shapes) +
   geom_polygon(aes(x, y, group = Label)) +
   coord_equal() + 
   theme_minimal()
+print(g)
 
-#----
-source('./R/outer_segment.R')
-out = lapply(1:nrow(segment), function(x, ...) {
-  print(segment$Label[x])
-  with(segment, outer_segment(Start[x], End[x], 1, 1.1))
-},
-segment)

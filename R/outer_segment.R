@@ -20,3 +20,21 @@ outer_segment = function(start, end, inner_r, outer_r){
              y = y)
   
 }
+
+#' outer_segments
+#' calls outer_segment for a data.frame that lists numerous outer segments
+#' @param segment A data.frame with Start, End, Label, and Direction columns
+outer_segments = function(segment){
+  inner_r = 1.03
+  outer_r = 1.1
+  
+  with(segment, lapply(
+    1:length(Start),
+    function(i){
+      outer_segment(Start[i], End[i], inner_r, outer_r) %>%
+        mutate(Direction = segment$Direction[i],
+               Label = as.character(segment$Label[i]))
+    }
+  )) %>%
+    do.call(rbind, .)
+}
