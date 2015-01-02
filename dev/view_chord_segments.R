@@ -6,12 +6,15 @@ out_end = 0.2
 in_start = 0.75
 in_end = 0.85
 
+source('./R/chord_segment.R')
+
 data = chord_segment(out_start, out_end, in_start, in_end)
-data2 = chord_segment(out_start, out_end, 0.75, in_end)
+
 
 #----
 library(ggplot2)
-g = ggplot(data) +
+data2 = chord_segment(out_start, 0.35, 0.75, 0.7)
+g = ggplot(data2) +
   geom_polygon(aes(x, y), fill = 'red') +
   coord_equal() +
   theme_minimal() +
