@@ -1,10 +1,10 @@
 #' @importFrom reshape2 dcast
 #' @export
 chord_shapes = function(data,
-                        from_amount = 'FROM_AMOUNT',
-                        to_amount = 'TO_AMOUNT',
-                        from_label = 'FROM_LABEL',
-                        to_label = 'TO_LABEL'){
+                        from_amount = 'OUT',
+                        to_amount = 'IN',
+                        from_label = 'FROM',
+                        to_label = 'TO'){
   
   if (length(intersect(unique(data[[from_label]]),
                        unique(data[[to_label]]))) > 0){
@@ -16,7 +16,7 @@ chord_shapes = function(data,
   
   #----
   
-  data = rename(data,
+  data = rename_(data,
                 FROM = from_label,
                 TO = to_label,
                 OUT = from_amount,
@@ -25,6 +25,7 @@ chord_shapes = function(data,
   segment = outer_spacing(data, gap_width = gap_width, ROI = ROI)
   outer_segments = outer_segments(segment)
   
+  #browser()
   
   M1 = dcast(data,
              as.formula(paste(to_label, '~', from_label)),
