@@ -8,8 +8,15 @@
 #' @param in_end point on circle (value in [0, 1])
 chord_segment = function(out_start, out_end, in_start, in_end){
   
-  out_theta <- 2 * pi * seq(out_start, out_end, length = 100)
-  in_theta <- 2 * pi * seq(in_start, in_end, length = 100)
+  if (any(abs(c(out_start, out_end, in_start, in_end)) > 1)){
+    stop('Input values to chord_segment must be between 0 and 1.')
+  }
+  
+  n_circ_out = max(ceiling(abs(out_start - out_end) * 100), 2)
+  n_circ_in = max(ceiling(abs(in_start - in_end) * 100), 2)
+  
+  out_theta <- 2 * pi * seq(out_start, out_end, length = n_circ_out)
+  in_theta <- 2 * pi * seq(in_start, in_end, length = n_circ_in)
   
   cos_out_theta = cos(out_theta)
   sin_out_theta = sin(out_theta)
