@@ -1,4 +1,4 @@
-
+library(testthat)
 
 context('Chord segment')
 
