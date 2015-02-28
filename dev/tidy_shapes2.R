@@ -12,7 +12,7 @@ data = sample_data(NROW = 5, NCOL = 5)
 #----
 source('./R/chord_spacing.R')
 segment_spaces = outer_spacing(data)
-chord_spaces = chord_spacing(data, segment_spaces)
+# chord_spaces = chord_spacing(data, segment_spaces)
 
 
 #----
