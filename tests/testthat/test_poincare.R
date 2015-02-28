@@ -37,5 +37,21 @@ test_that('special case works', {
 })
 
 
+test_that('wrapper functions work', {
+  v1 = 0
+  v2 = 0.25
+  data = circly:::unit_poincare(v1, v2)
+  expect_equal(with(data, sqrt((x - 1) ^ 2 + (y - 1) ^ 2)),
+               rep(1, length(data$x)))
+  
+  v1 = 0.75
+  v2 = 0.5
+  data = circly:::unit_poincare(v1, v2)
+  expect_equal(with(data, sqrt((x + 1) ^ 2 + (y + 1) ^ 2)),
+               rep(1, length(data$x)))
+  
+})
+
+
 # ggplot(as.data.frame(data)) + geom_line(aes(x,y)) + coord_equal() + scale_y_continuous(limits = c(-1, 1)) +
 #   scale_x_continuous(limits = c(-1, 1))
