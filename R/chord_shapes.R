@@ -17,10 +17,10 @@ chord_shapes = function(data,
   #----
   
   data = rename_(data,
-                FROM = from_label,
-                TO = to_label,
-                OUT = from_amount,
-                IN = to_amount)
+                 FROM = from_label,
+                 TO = to_label,
+                 OUT = from_amount,
+                 IN = to_amount)
   
   segment = outer_spacing(data, gap_width = gap_width, ROI = ROI)
   outer_segments = outer_segments(segment)
@@ -91,10 +91,9 @@ chord_shapes = function(data,
     do.call(rbind, .) %>%
     mutate(ID = factor(ID, IDS))
   
-  #chords = placeholder_function(out_start, out_end, in_start, in_end, M1, M2)
-  chords = data.frame()
+  chords = chord_segments(data)
   
-  return(list(outer_segments = outer_segments,
+  return(list(crust = outer_segments,
               chords = chords))
   
 }

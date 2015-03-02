@@ -4,8 +4,11 @@ library(ggplot2)
 remove(list = ls())
 
 #----
+NROW = 5
+NCOL = 5
+
 source('./R/sample_data.R')
-data = sample_data(NROW = 5, NCOL = 5)
+data = sample_data(NROW = NROW, NCOL = NCOL)
 
 # SHAPES = chord_shapes(data)
 
@@ -36,8 +39,11 @@ print(g)
 #----
 g = ggplot(outer_shapes) +
   geom_polygon(aes(x, y, group = Label, fill = Label)) +
-  geom_polygon(data = chord_shapes, aes(x, y, fill = Chord)) + 
+  geom_polygon(data = chord_shapes, aes(x, y, group = Chord, fill = FROM), alpha = 0.5) + 
+  scale_fill_manual(guide = guide_legend(nrow = 3),
+                    values = plot3D::jet.col(NROW + NCOL)) +
   coord_equal() + 
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = 'top')
 print(g)
 
