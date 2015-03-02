@@ -1,10 +1,16 @@
-
+library(dplyr)
 library(circly)
-NROW = 3
+NROW = 10
 NCOL = 2
 
 source('./R/sample_data.R')
 data = sample_data(NROW = NROW, NCOL = NCOL)
+
+data = expand.grid(FROM = letters[1:NCOL],
+                   TO = LETTERS[1:NROW]) %>%
+  arrange(FROM)
+data$IN = 1:(NCOL * NROW)
+data$OUT = (NCOL * NROW):1
 
 SHAPES = chord_shapes(data)
 
